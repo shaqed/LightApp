@@ -1,0 +1,42 @@
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="Light"
+        android:gravity="center"
+        android:textSize="26sp"
+        android:textColor="#000"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="0px"
+            android:layout_weight="4"
+            android:hint="IP"
+            android:id="@+id/etIp"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="0px"
+            android:layout_weight="1"
+            android:id="@+id/etPort"
+            android:hint="PORT"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:text="TOGGLE LIGHT"
+        android:id="@+id/btnGo"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="LOAD DEFAULT IP"
+        android:id="@+id/defaultButton"
+        android:layout_height="wrap_content" />
+</LinearLayout>
