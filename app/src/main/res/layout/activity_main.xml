@@ -36,6 +36,12 @@
 
     <Button
         android:layout_width="match_parent"
+        android:text="GET LIGHT STATE"
+        android:id="@+id/btnState"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
         android:text="LOAD DEFAULT IP"
         android:id="@+id/defaultButton"
         android:layout_height="wrap_content" />

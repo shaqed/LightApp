@@ -21,6 +21,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String SP_IP = "ip";
     private static final String SP_PORT = "port";
 
+    public static final String COMMAND_TOGGLE = "TOGGLE";
+    public static final String COMMAND_GET_STATE = "STATE";
+
+    public static final String RESPONSE_STATE_ON = "1";
+    public static final String RESPONSE_STATE_OFF = "0";
+    public static final String RESPONSE_TOGGLE = "TOGGLED";
+
     private EditText etIP, etPort;
     private Button goBtn;
     private boolean changedIP = false;
@@ -35,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etPort = findViewById(R.id.etPort);
         goBtn = findViewById(R.id.btnGo);
         goBtn.setOnClickListener(this);
+
+        findViewById(R.id.btnState).setOnClickListener(this);
 
 
         loadData(); // loads initial data
@@ -86,24 +95,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == 100 && grantResults.length > 0) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                go();
+                Toast.makeText(this, "Thanks for permission, click again", Toast.LENGTH_SHORT).show();
+//                go(COMMA);
             }
         }
     }
 
     @Override
     public void onClick(View view) {
-        if (permission()) {
-            saveChanges(); // each time you click "go" I save the current ip and port (smartly)
-            go();
-        } else {
-            Toast.makeText(this, "Don't have permission to do so", Toast.LENGTH_SHORT).show();
+        if (view.getId() == R.id.btnGo) {
+            if (permission()) {
+                saveChanges(); // each time you click "go" I save the current ip and port (smartly)
+                go(COMMAND_TOGGLE);
+            } else {
+                Toast.makeText(this, "Don't have permission to do so", Toast.LENGTH_SHORT).show();
+            }
+        } else if (view.getId() == R.id.btnState) {
+            go(COMMAND_GET_STATE);
         }
     }
 
-    private void go() {
+    private void go(String command) {
         try {
-            Thread t = new SendToggle(this, etIP.getText().toString(), Integer.valueOf(etPort.getText().toString()), goBtn);
+            Thread t = new SendCommand(this, etIP.getText().toString(), Integer.valueOf(etPort.getText().toString()), goBtn, command);
             t.start();
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
