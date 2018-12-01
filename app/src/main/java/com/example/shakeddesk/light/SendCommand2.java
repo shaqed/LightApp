@@ -88,6 +88,8 @@ public class SendCommand2 extends Thread {
         this.command = command;
         this.runBefore = runBefore;
         this.runAfter = runAfter;
+
+
     }
 
     private void runOnUI(final ServerAnswer serverAnswer, final String response) {

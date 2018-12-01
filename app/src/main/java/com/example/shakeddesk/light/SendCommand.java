@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+@Deprecated
 public class SendCommand extends Thread {
 
     private Context context;
