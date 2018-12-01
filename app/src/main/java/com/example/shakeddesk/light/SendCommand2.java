@@ -10,6 +10,13 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+
+/**
+ * How to use this class:
+ * Create a new instance from it, provide everything to the constructor
+ *
+ * Call the "start()" method of it when you want to initiate a server call
+ */
 public class SendCommand2 extends Thread {
 
 
