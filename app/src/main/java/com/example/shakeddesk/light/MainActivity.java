@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText etIP, etPort;
     private Button goBtn;
+    private ImageView imageState;
     private boolean changedIP = false;
     private boolean changedPort = false;
 
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etPort = findViewById(R.id.etPort);
         goBtn = findViewById(R.id.btnGo);
         goBtn.setOnClickListener(this);
+        imageState = findViewById(R.id.imageState);
 
         findViewById(R.id.btnState).setOnClickListener(this);
 
@@ -73,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 changedPort = true;
             }
         });
+
+
 
     }
 
